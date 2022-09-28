@@ -1,6 +1,10 @@
-# selectricgo
+# StriZone
 
 ## Folder / File Structure
+
+## To use the app go to the following drive link
+https://drive.google.com/file/d/1TvoOprFZcmhapmZJkktYp2uCkxIJEO8A/view?usp=sharing
+
 #### `!Note: file / folder name should be lower case separated by _`
 ```
 lib
