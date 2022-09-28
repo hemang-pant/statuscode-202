@@ -86,6 +86,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     polylineCount++;
     _polyLines.add(
       Polyline(
+        // commenting
         polylineId: PolylineId(polyLineIdVal),
         color: Color.fromARGB(255, 0, 207, 131),
         points: points.map((e) => LatLng(e.latitude, e.longitude)).toList(),
