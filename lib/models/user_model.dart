@@ -25,3 +25,31 @@ class UserModel {
     };
   }
 }
+class AlertModel {
+  String? uid;
+  String? latitude;
+  String? longitude;
+  DateTime? time;
+
+  AlertModel({this.uid, this.latitude, this.longitude, this.time});
+
+  // receiving data from server
+  factory AlertModel.fromMap(map) {
+    return AlertModel(
+      uid: map['uid'],
+      latitude: map['latitude'],
+      longitude: map['longitude'],
+      time: map['time'],
+    );
+  }
+
+  // sending data to our server
+  Map<String, dynamic> toMap() {
+    return {
+      'uid': uid,
+      'latitude': latitude,
+      'longitude': longitude,
+      'time': time,
+    };
+  }
+}

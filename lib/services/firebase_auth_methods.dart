@@ -193,7 +193,31 @@ class FirebaseAuthMethods {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
+    Fluttertoast.showToast(msg: "Alert sent to local amin :) ");
+  }
+
+  CustomFireStore(String lat, String lng) async {
+    print("runnningggg");
+    // calling our firestore
+    // calling our user model
+    // sedning these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+    AlertModel userModel = AlertModel();
+
+    // writing all the values
+    userModel.latitude = lat;
+    userModel.uid = user!.displayName;
+    userModel.longitude = lng;
+    userModel.time = DateTime.now();
+
+    await firebaseFirestore
+        .collection("alert_model")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Alert sent to Admin ");
   }
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(

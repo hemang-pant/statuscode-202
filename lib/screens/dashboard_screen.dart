@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -12,6 +13,7 @@ import 'package:selectricgo/models/markers_model.dart';
 import 'dart:async';
 import 'package:selectricgo/screens/sidebar_screen.dart';
 import 'package:selectricgo/screens/station_details_page.dart';
+import 'package:selectricgo/services/firebase_auth_methods.dart';
 import 'package:selectricgo/utils/mapStyle.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -428,39 +430,72 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 20),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                elevation: 5,
-                minimumSize: const Size(167, 50),
-                shadowColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                backgroundColor: const Color.fromARGB(255, 0, 255, 162),
-                primary: Colors.black,
-              ),
-              onPressed: () {
-                // "button pressedaaaa");
-                setState(() {
-                  firstTimeCamera = true;
-                });
-                updateCameraLocation(
-                    LatLng(applicationBloc.currentLocation!.latitude,
-                        applicationBloc.currentLocation!.longitude),
-                    dtuMarkers.first.position,
-                    mapController);
-              },
-              child: Center(
-                child: Text(
-                  "Find Nearest Local Admin",
-                  style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    elevation: 5,
+                    minimumSize: const Size(250, 50),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: const Color.fromARGB(255, 0, 255, 162),
+                    primary: Colors.black,
+                  ),
+                  onPressed: () {
+                    // "button pressedaaaa");
+                    {
+                      // context.read<FirebaseAuthMethods>().CustomFireStore(applicationBloc.currentLocation!.latitude.toString(), applicationBloc.currentLocation!.latitude.toString());
+                    }
+                    setState(() {
+                      firstTimeCamera = true;
+                    });
+                    updateCameraLocation(
+                        LatLng(applicationBloc.currentLocation!.latitude,
+                            applicationBloc.currentLocation!.longitude),
+                        dtuMarkers.first.position,
+                        mapController);
+                  },
+                  child: Center(
+                    child: Text(
+                      "Find Nearest Local Admin",
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            color: Color(0xFF000000),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    elevation: 5,
+                    minimumSize: const Size(50, 50),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor:Colors.red,
+                    primary: Colors.black,
+                  ),
+                  onPressed: () {
+                    // "button pressedaaaa");
+                    {
+                      context.read<FirebaseAuthMethods>().CustomFireStore(applicationBloc.currentLocation!.latitude.toString(), applicationBloc.currentLocation!.latitude.toString());
+                    }
+                  },
+                  child: Center(
+                    child: Icon(
+                      Icons.report,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                
+              ],
             ),
           ),
         ],
