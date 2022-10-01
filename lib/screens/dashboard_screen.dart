@@ -193,6 +193,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         )),
                   ),
                   Text(
+
                       "${(Geolocator.distanceBetween(applicationBloc.currentLocation!.latitude, applicationBloc.currentLocation!.longitude, destination.latitude, destination.longitude) / 1000).toStringAsFixed(2)} KM Away from you",
                       style: GoogleFonts.montserrat(
                         fontSize: 22,
@@ -241,7 +242,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         );
       },
       infoWindow: InfoWindow(
-        title: title,
+        title: 'Local Admin: $title',
       ),
     );
   }
